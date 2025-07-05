@@ -55,9 +55,9 @@ class Player {
         name = p_name;
         pokemon = p_pokemon;
     }
-    void choosePokemon(int choice) 
+    void choosePokemon(int choice)
     {
-		switch ((PokemonChoice)choice) 
+        switch ((PokemonChoice)choice)
         {
         case PokemonChoice::Charmander:
             pokemon = Pokemon("Charmander", PokemonType::Fire, 100);
@@ -76,35 +76,39 @@ class Player {
             break;
         }
         cout << "Player " << name << " chose " << pokemon.name << "!\n";
-};;
+    }
+};
 
     class ProfessorOak {
     public:
         string name;
+        ProfessorOak() {
+            name = "Professor Oak";
+		}
 
         void greetPlayer(Player& player) {
             // Introduction by the Professor
-            cout << "Professor Oak: Hello there! Welcome to the world of Pokemon!\n";
-            cout << "Professor Oak: My name is Oak. People call me the Pokemon Professor!\n";
-            cout << "Professor Oak: But enough about me. Let's talk about you!\n";
+            cout << name << ": Hello there! Welcome to the world of Pokemon!\n";
+            cout << name << ": My name is Oak. People call me the Pokemon Professor!\n";
+            cout << name << ": But enough about me. Let's talk about you!\n";
         }
         void offerPokemonChoices(Player& player) {
             // Taking player name as input
-            cout << "Professor Oak: First, tell me, what’s your name?\n";
+            cout << name << ": First, tell me, what’s your name?\n";
             getline(cin, player.name);
 
-            cout << "Professor Oak: Ah, " << player.name << "! What a fantastic name!\n";
-            cout << "Professor Oak: You must be eager to start your adventure. But first, you’ll need a Pokemon of your own!\n";
+            cout << name << ": Ah, " << player.name << "! What a fantastic name!\n";
+            cout << name << ": You must be eager to start your adventure. But first, you’ll need a Pokemon of your own!\n";
 
             // Presenting Pokemon choices
-            cout << "Professor Oak: I have three Pokemon here with me. They’re all quite feisty!\n";
-            cout << "Professor Oak: Choose wisely...\n";
+            cout << name << ": I have three Pokemon here with me. They’re all quite feisty!\n";
+            cout << name << ": Choose wisely...\n";
             cout << "1. Charmander - The fire type. A real hothead!\n";
             cout << "2. Bulbasaur - The grass type. Calm and collected!\n";
             cout << "3. Squirtle - The water type. Cool as a cucumber!\n";
 
             int choice;
-            cout << "Professor Oak: So, which one will it be? Enter the number of your choice: ";
+            cout << name << ": So, which one will it be? Enter the number of your choice: ";
             cin >> choice;
             player.choosePokemon(choice);
         }
@@ -131,8 +135,7 @@ string GetPokemonTypeString(PokemonType type) {
 
 int main() {
     ProfessorOak professorOak;
-	professorOak.name = "Professor Oak";
-	Pokemon placeholderPokemon("Pikachu", PokemonType::Electric, 40);
+    Pokemon placeholderPokemon("Pikachu", PokemonType::Electric, 40);
     Player player("Trainer", placeholderPokemon);
 
     // Professor Oak greets the player
@@ -141,7 +144,7 @@ int main() {
     professorOak.offerPokemonChoices(player);
 
     // Display chosen Pokemon details
-    cout << "You," << player.name << ", have chosen: " << player.pokemon.name << ", the " << GetPokemonTypeString(player.pokemon.type) << " type with health " << player.pokemon.health << ".\n";
+    cout << professorOak.name << ": You, " << player.name << ", have chosen: " << player.pokemon.name << ", the " << GetPokemonTypeString(player.pokemon.type) << " type with health " << player.pokemon.health << ".\n";
     // Example of attacking with the chosen Pokemon
     //player.pokemon.attack();
 
