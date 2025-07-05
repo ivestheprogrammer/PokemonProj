@@ -134,10 +134,12 @@ int main() {
 	professorOak.name = "Professor Oak";
 	Pokemon placeholderPokemon("Pikachu", PokemonType::Electric, 40);
     Player player("Trainer", placeholderPokemon);
+
     // Professor Oak greets the player
     professorOak.greetPlayer(player);
     // Professor Oak offers Pokemon choices to the player
     professorOak.offerPokemonChoices(player);
+
     // Display chosen Pokemon details
     cout << "You," << player.name << ", have chosen: " << player.pokemon.name << ", the " << GetPokemonTypeString(player.pokemon.type) << " type with health " << player.pokemon.health << ".\n";
     // Example of attacking with the chosen Pokemon
